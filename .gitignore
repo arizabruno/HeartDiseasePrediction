@@ -89,9 +89,5 @@ dmypy.json
 # vscode
 .vscode/
 
-# Data Files (adjust according to your data)
-# You might want to exclude large data files or sensitive information
-*.csv
-*.txt
-*.xlsx
 # Add specific file names if needed
+**/.DS_Store
