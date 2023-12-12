@@ -35,5 +35,35 @@ The dataset comprises several features that are critical in diagnosing heart dis
 - **Target**: Presence of heart disease (1 = present, 0 = absent).
 
 The dataset consists of [number of samples] instances with [number of features] features, providing a robust foundation for building a predictive model.
-****
 
+
+## Handling Outliers
+
+The following process has been implemented to identify and handle outliers in numerical columns of the dataset. The approach is based on the Interquartile Range (IQR) method, a robust statistical technique used to detect outliers.
+
+**Step 1: Identify Numerical Columns**
+
+First, we extract a list of all numerical columns in the dataset since our focus is on numerical outliers.
+
+
+**Step 2: Calculate IQR for Each Column**
+
+For each numerical column, we calculate the Interquartile Range (IQR), which is the difference between the 75th percentile (Q3) and the 25th percentile (Q1).
+
+**Step 3: Define Outlier Limits**
+
+Using the IQR, we define the limits beyond which data points will be considered outliers. Data points below the lower limit or above the upper limit are candidates for outlier treatment.
+
+- **Lower Limit:** Q1 - 1.5 * IQR
+- **Upper Limit:** Q3 + 1.5 * IQR
+
+**Step 4: Apply Capping**
+
+We cap the outliers by applying the lower and upper limits. Values beyond these limits are set to the limits themselves, thus minimizing the impact of extreme outliers.
+
+Upper Capping: Values greater than the upper limit are set to the upper limit.
+Lower Capping: Values lower than the lower limit are set to the lower limit.
+
+**Step 5: Update the Dataset**
+
+The original dataset is updated with the capped values, ensuring that the outliers do not disproportionately affect the subsequent analysis.
